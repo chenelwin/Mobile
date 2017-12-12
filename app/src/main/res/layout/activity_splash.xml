@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ff262626">
+        android:background="@color/Line_background">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
