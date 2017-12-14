@@ -1,5 +1,6 @@
 package com.example.asus.projectpmd.PagerFragment.Friend.AddFriend;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -47,20 +48,26 @@ public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.View
         final AddFriendAdapter.ViewHolder tempHolder = holder;
         final Friend addFriend = addFriends.get(position);
 
+
         holder.addFriendName.setText(addFriend.getNama());
         holder.addFriendDesc.setText(addFriend.getDesc());
         holder.addFriendIcon.setImageResource(addFriend.getIcon());
 
-        holder.cv.setOnClickListener(new View.OnClickListener() {
+        holder.btnAddFriend.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View view) {
-            Toast.makeText(context, "The position is: "+position, Toast.LENGTH_SHORT).show();
-            tempHolder.cv.setVisibility(View.GONE);
-            if(tambahTeman!=null){
-                tambahTeman.addItem(addFriend);
-            }
+            public void onClick(View view){
+                ProgressDialog progressDialog = new ProgressDialog(context);
+                progressDialog.setMessage("Processing...");
+                progressDialog.show();
+
+                tempHolder.cv.setVisibility(View.GONE);
+                Toast.makeText(context, "The position is: "+position, Toast.LENGTH_SHORT).show();
+                if(tambahTeman!=null){
+                    tambahTeman.addItem(addFriend);
+                }
             }
         });
+
     }
 
     @Override
@@ -71,6 +78,7 @@ public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.View
         ImageView addFriendIcon;
         TextView addFriendName;
         TextView addFriendDesc;
+        ImageView btnAddFriend;
         CardView cv;
 
         public ViewHolder(View itemView){
@@ -78,6 +86,7 @@ public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.View
             addFriendIcon = (ImageView)itemView.findViewById(R.id.addFriendIcon);
             addFriendName = (TextView)itemView.findViewById(R.id.addFriendName);
             addFriendDesc = (TextView)itemView.findViewById(R.id.addFriendDesc);
+            btnAddFriend = (ImageView)itemView.findViewById(R.id.btnAddFriend);
             cv = (CardView)itemView.findViewById(R.id.cv);
         }
 

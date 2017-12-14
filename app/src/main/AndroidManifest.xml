@@ -9,19 +9,31 @@
         android:roundIcon="@drawable/lineblack"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" >
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".SplashActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".PagerFragment.Friend.AddFriend.AddFriendActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".PagerFragment.Chat.ChatActivity.ChatActivity"></activity>
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".PagerFragment.Chat.ChatActivity.ChatActivity">
+        </activity>
+
     </application>
 
 </manifest>
