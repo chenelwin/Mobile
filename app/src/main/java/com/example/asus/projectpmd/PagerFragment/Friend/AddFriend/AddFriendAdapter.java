@@ -2,6 +2,7 @@ package com.example.asus.projectpmd.PagerFragment.Friend.AddFriend;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,11 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.asus.projectpmd.MainActivity;
 import com.example.asus.projectpmd.PagerFragment.Friend.Friend;
 import com.example.asus.projectpmd.PagerFragment.Friend.FriendList;
 import com.example.asus.projectpmd.R;
 
 import java.util.List;
+
+import static java.lang.Thread.sleep;
 
 /**
  * Created by Asus on 2017-12-09.
@@ -56,12 +60,25 @@ public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.View
         holder.btnAddFriend.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                ProgressDialog progressDialog = new ProgressDialog(context);
+                final ProgressDialog progressDialog = new ProgressDialog(context);
                 progressDialog.setMessage("Processing...");
                 progressDialog.show();
 
+                Thread thread = new Thread(){
+                    @Override
+                    public void run(){
+                        try{
+                            sleep(1500);
+                            progressDialog.hide();
+                        }catch(Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                thread.start();
+
                 tempHolder.cv.setVisibility(View.GONE);
-                Toast.makeText(context, "The position is: "+position, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "The position is: "+position, Toast.LENGTH_SHORT).show();
                 if(tambahTeman!=null){
                     tambahTeman.addItem(addFriend);
                 }
