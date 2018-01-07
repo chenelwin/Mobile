@@ -23,7 +23,7 @@ public class AddFriendActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_friend);
 
-        addFriends = (ArrayList) AddFriendList.createListItems();
+        addFriends = (ArrayList) AddFriendList.items;
 
         addFriendAdapter = new AddFriendAdapter(addFriends);
         AddFriends = (RecyclerView)findViewById(R.id.RvAddFriend);

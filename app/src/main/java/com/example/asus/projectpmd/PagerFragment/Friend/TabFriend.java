@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.example.asus.projectpmd.PagerFragment.Chat.TabChat;
 import com.example.asus.projectpmd.PagerFragment.Friend.AddFriend.AddFriendActivity;
 import com.example.asus.projectpmd.PagerFragment.Friend.AddFriend.AddFriendAdapter;
+import com.example.asus.projectpmd.PagerFragment.Friend.AddFriend.AddFriendList;
 import com.example.asus.projectpmd.R;
 
 import java.util.ArrayList;
@@ -62,8 +63,17 @@ public class TabFriend extends Fragment implements AddFriendAdapter.TambahTeman{
 
     @Override
     public void addItem(Friend friend) {
-        friendList.add(friend);
-        friendAdapter.notifyDataSetChanged();
+        boolean a = true;
+        for(Friend tempFriend: friendList) {
+            if(tempFriend.getNama().equals(friend.getNama())) {
+                a = false;
+                break;
+            }
+        }
+        if (a) {
+            friendList.add(friend);
+            friendAdapter.notifyDataSetChanged();
+        }
     }
 
     public interface OnFragmentInteractionListener {

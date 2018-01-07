@@ -14,8 +14,9 @@ import android.widget.TextView;
 import com.example.asus.projectpmd.Adapter.PagerAdapter;
 import com.example.asus.projectpmd.PagerFragment.Chat.TabChat;
 import com.example.asus.projectpmd.PagerFragment.Friend.AddFriend.AddFriendActivity;
+import com.example.asus.projectpmd.PagerFragment.Friend.AddFriend.AddFriendList;
 import com.example.asus.projectpmd.PagerFragment.Friend.TabFriend;
-import com.example.asus.projectpmd.PagerFragment.TabMore;
+import com.example.asus.projectpmd.PagerFragment.More.TabMore;
 import com.example.asus.projectpmd.PagerFragment.TabNews;
 import com.example.asus.projectpmd.PagerFragment.TabTimeline;
 
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements TabFriend.OnFragm
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        AddFriendList.createListItems();
         final TabLayout tabLayout = (TabLayout)findViewById(R.id.tablayout);
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.tabfriendactive));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.tabchat));
