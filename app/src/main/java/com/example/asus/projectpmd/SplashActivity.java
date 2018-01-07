@@ -1,4 +1,4 @@
-package com.example.asus.projectpmd.Adapter;
+package com.example.asus.projectpmd;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

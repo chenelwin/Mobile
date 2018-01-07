@@ -1,9 +1,13 @@
 package com.example.asus.projectpmd;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,7 +26,7 @@ import com.example.asus.projectpmd.PagerFragment.TabTimeline;
 
 public class MainActivity extends AppCompatActivity implements TabFriend.OnFragmentInteractionListener, TabChat.OnFragmentInteractionListener, TabTimeline.OnFragmentInteractionListener, TabNews.OnFragmentInteractionListener, TabMore.OnFragmentInteractionListener {
     int posisi = 0;
-
+    private Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements TabFriend.OnFragm
 
 
 
+        CheckPermission();
         final TextView header = (TextView)findViewById(R.id.header);
         final ImageView headbtn1 = (ImageView)findViewById(R.id.headbtn1);
         final ImageView headbtn2 = (ImageView)findViewById(R.id.headbtn2);
@@ -53,11 +58,12 @@ public class MainActivity extends AppCompatActivity implements TabFriend.OnFragm
             }
         });
 
-        final Context context;
+
 
         final ViewPager viewPager = (ViewPager)findViewById(R.id.pager);
         final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
+        viewPager.setOffscreenPageLimit(5);
         viewPager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -141,5 +147,26 @@ public class MainActivity extends AppCompatActivity implements TabFriend.OnFragm
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    private boolean CheckPermission() {
+        int result = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE+Manifest.permission.WRITE_EXTERNAL_STORAGE+Manifest.permission.CAMERA);
+        if(result== PackageManager.PERMISSION_GRANTED){
+            return true;
+        }else{
+            RequestPermission();
+            return false;
+        }
+    }
+
+    private void RequestPermission() {
+        if(ContextCompat.checkSelfPermission(this,Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},2);
+        }else if(ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},3);
+        }
+        if(ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA}, 1);
+        }
     }
 }
