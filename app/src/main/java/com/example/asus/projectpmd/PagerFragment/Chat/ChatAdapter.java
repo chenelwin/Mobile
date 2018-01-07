@@ -1,14 +1,18 @@
 package com.example.asus.projectpmd.PagerFragment.Chat;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.asus.projectpmd.PagerFragment.Chat.ChatActivity.ChatActivity;
 import com.example.asus.projectpmd.PagerFragment.Friend.Friend;
+import com.example.asus.projectpmd.PagerFragment.Friend.FriendAdapter;
 import com.example.asus.projectpmd.R;
 
 import java.util.List;
@@ -18,7 +22,6 @@ import java.util.List;
  */
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
-
     List<Chat> chats;
     Context context;
 
@@ -27,18 +30,34 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     }
 
     @Override
-    public ChatAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_chat, parent, false);
+        ViewHolder viewHolder = new ViewHolder(view);
+        context = parent.getContext();
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(ChatAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+        final Chat chat = chats.get(position);
 
+        holder.textChat.setText(chat.getNama());
+        holder.descChat.setText(chat.getDesc());
+        holder.imgChat.setImageResource(chat.getIcon());
+        holder.time.setText(chat.getTime());
+        holder.cv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), ChatActivity.class);
+                intent.putExtra("Nama", chat.getNama());
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return chats.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

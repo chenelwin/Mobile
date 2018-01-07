@@ -42,7 +42,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
-                    android:textColor="#ff565656"
+                    android:textColor="#ff666666"
                     android:id="@+id/descChat"/>
             </LinearLayout>
 
@@ -54,6 +54,8 @@
                     android:id="@+id/timeChat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_margin="10dp"
                     android:textColor="#ff424242"/>
             </LinearLayout>
 
