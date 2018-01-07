@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -22,10 +23,10 @@
                 android:layout_centerVertical="true"
                 android:layout_margin="10dp"
                 android:src="@drawable/profile"
-                android:id="@+id/imgFriend"/>
+                android:id="@+id/imgChat"/>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_margin="10dp">
@@ -35,15 +36,24 @@
                     android:layout_height="wrap_content"
                     android:textSize="17sp"
                     android:layout_gravity="left"
-                    android:id="@+id/textFriend"
+                    android:id="@+id/textChat"
                     android:textColor="#ffcccccc"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:textColor="#ff565656"
-                    android:id="@+id/descFriend"/>
+                    android:id="@+id/descChat"/>
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ff424242"/>
             </LinearLayout>
 
         </LinearLayout>

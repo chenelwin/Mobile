@@ -15,7 +15,6 @@ public class ChatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
 
         TextView chatName = (TextView)findViewById(R.id.chatName);
-        ImageView btnAddFriend = (ImageView)findViewById(R.id.btnAddFriend);
         chatName.setText(getIntent().getStringExtra("Nama"));
     }
 }

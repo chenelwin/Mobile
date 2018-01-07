@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.asus.projectpmd.PagerFragment.Chat.TabChat;
 import com.example.asus.projectpmd.PagerFragment.Friend.TabFriend;
-import com.example.asus.projectpmd.PagerFragment.TabMore;
+import com.example.asus.projectpmd.PagerFragment.More.TabMore;
 import com.example.asus.projectpmd.PagerFragment.TabNews;
 import com.example.asus.projectpmd.PagerFragment.TabTimeline;
 

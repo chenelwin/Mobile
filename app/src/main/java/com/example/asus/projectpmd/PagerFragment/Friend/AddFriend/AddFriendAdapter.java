@@ -3,6 +3,7 @@ package com.example.asus.projectpmd.PagerFragment.Friend.AddFriend;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -48,8 +49,7 @@ public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(AddFriendAdapter.ViewHolder holder, final int position) {
-        final AddFriendAdapter.ViewHolder tempHolder = holder;
+    public void onBindViewHolder(final AddFriendAdapter.ViewHolder holder, final int position) {
         final Friend addFriend = addFriends.get(position);
 
 
@@ -70,6 +70,7 @@ public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.View
                         try{
                             sleep(1500);
                             progressDialog.hide();
+                            sleep(500);
                         }catch(Exception e){
                             e.printStackTrace();
                         }
@@ -77,11 +78,18 @@ public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.View
                 };
                 thread.start();
 
-                tempHolder.cv.setVisibility(View.GONE);
-                //Toast.makeText(context, "The position is: "+position, Toast.LENGTH_SHORT).show();
-                if(tambahTeman!=null){
-                    tambahTeman.addItem(addFriend);
-                }
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        holder.cv.setVisibility(View.GONE);
+                        //Toast.makeText(context, "The position is: "+position, Toast.LENGTH_SHORT).show();
+                        if(tambahTeman!=null){
+                            AddFriendList.deleteItem(addFriend);
+                            tambahTeman.addItem(addFriend);
+                        }
+                    }
+                }, 1600);
             }
         });
 

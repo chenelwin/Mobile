@@ -40,9 +40,9 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final Friend friend = friends.get(position);
 
-        holder.textTvShow.setText(friend.getNama());
-        holder.desc.setText(friend.getDesc());
-        holder.imgTvShow.setImageResource(friend.getIcon());
+        holder.textFriend.setText(friend.getNama());
+        holder.descFriend.setText(friend.getDesc());
+        holder.imgFriend.setImageResource(friend.getIcon());
         holder.cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,16 +60,16 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView imgTvShow;
-        TextView textTvShow;
-        TextView desc;
+        ImageView imgFriend;
+        TextView textFriend;
+        TextView descFriend;
         CardView cv;
 
         public ViewHolder(View itemView){
             super(itemView);
-            imgTvShow = (ImageView)itemView.findViewById(R.id.imgTvshow);
-            textTvShow = (TextView)itemView.findViewById(R.id.textTvshow);
-            desc = (TextView)itemView.findViewById(R.id.desc);
+            imgFriend = (ImageView)itemView.findViewById(R.id.imgFriend);
+            textFriend = (TextView)itemView.findViewById(R.id.textFriend);
+            descFriend = (TextView)itemView.findViewById(R.id.descFriend);
             cv = (CardView)itemView.findViewById(R.id.cv);
         }
 

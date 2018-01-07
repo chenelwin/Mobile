@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@android:color/white"
-    tools:context="com.example.asus.projectpmd.PagerFragment.TabMore">
+    tools:context="com.example.asus.projectpmd.PagerFragment.More.TabMore">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,19 +15,19 @@
         android:background="@android:color/white">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/moreprofile"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_margin="10dp"
             android:src="@drawable/profile"/>
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="75dp"
+            android:layout_marginRight="75dp"
             android:src="@drawable/morelinepoint"/>
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_margin="10dp"
             android:src="@drawable/morebarcode"/>
 
     </LinearLayout>

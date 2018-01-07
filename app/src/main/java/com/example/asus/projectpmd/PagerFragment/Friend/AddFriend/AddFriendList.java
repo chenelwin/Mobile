@@ -13,13 +13,12 @@ import java.util.List;
  */
 
 public class AddFriendList {
+    public static List<Friend> items = new ArrayList();
     public static final String[] AddNama = {"Tambah1", "Tambah2", "Tambah3", "Tambah4", "Tambah5"};
     public static final String[] AddDesc = {"test1", "test2", "test3", "test4", "test5"};
     public static final int[] AddIcon = {R.drawable.profile, R.drawable.profile, R.drawable.profile, R.drawable.profile, R.drawable.profile};
 
-    public static List<Friend> createListItems(){
-        List<Friend> items = new ArrayList<>();
-
+    public static void createListItems(){
         for(int i=0 ; i<AddNama.length; i++){
             Friend addFriend = new Friend();
 
@@ -28,8 +27,14 @@ public class AddFriendList {
             addFriend.setDesc(AddDesc[i]);
             items.add(addFriend);
         }
-        return items;
     }
 
-
+    public static void deleteItem(Friend friend) {
+        for(int i = 0; i < items.size(); i++) {
+            if (items.get(i).getNama().equals(friend.getNama())) {
+                items.remove(i);
+                break;
+            }
+        }
+    }
 }
