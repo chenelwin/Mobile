@@ -22,7 +22,7 @@ import java.util.List;
 
 public class TabFriend extends Fragment implements AddFriendAdapter.TambahTeman{
     public View view;
-    private List<Friend> friendList;
+    public static List<Friend> friendList;
     private RecyclerView rvFriend;
     private FriendAdapter friendAdapter;
     private TabFriend.OnFragmentInteractionListener mListener;
@@ -62,7 +62,7 @@ public class TabFriend extends Fragment implements AddFriendAdapter.TambahTeman{
     }
 
     @Override
-    public void addItem(Friend friend) {
+    public void addItemFriend(Friend friend) {
         boolean a = true;
         for(Friend tempFriend: friendList) {
             if(tempFriend.getNama().equals(friend.getNama())) {

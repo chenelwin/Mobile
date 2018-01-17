@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,7 @@ import static java.lang.Thread.sleep;
 public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.ViewHolder> {
 
     public interface TambahTeman{
-        void addItem(Friend friend);
+        void addItemFriend(Friend friend);
     }
 
     public static TambahTeman tambahTeman;
@@ -49,9 +50,8 @@ public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(final AddFriendAdapter.ViewHolder holder, final int position) {
-        final Friend addFriend = addFriends.get(position);
-
+    public void onBindViewHolder(final AddFriendAdapter.ViewHolder holder, int position) {
+        final Friend addFriend = addFriends.get(holder.getAdapterPosition());
 
         holder.addFriendName.setText(addFriend.getNama());
         holder.addFriendDesc.setText(addFriend.getDesc());
@@ -82,11 +82,11 @@ public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.View
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        holder.cv.setVisibility(View.GONE);
                         //Toast.makeText(context, "The position is: "+position, Toast.LENGTH_SHORT).show();
                         if(tambahTeman!=null){
+                            tambahTeman.addItemFriend(addFriend);
                             AddFriendList.deleteItem(addFriend);
-                            tambahTeman.addItem(addFriend);
+                            notifyDataSetChanged();
                         }
                     }
                 }, 1600);

@@ -19,6 +19,7 @@ public class AddFriendList {
     public static final int[] AddIcon = {R.drawable.profile, R.drawable.profile, R.drawable.profile, R.drawable.profile, R.drawable.profile};
 
     public static void createListItems(){
+        items = new ArrayList<>();
         for(int i=0 ; i<AddNama.length; i++){
             Friend addFriend = new Friend();
 

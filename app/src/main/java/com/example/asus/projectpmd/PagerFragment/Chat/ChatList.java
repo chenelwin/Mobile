@@ -3,6 +3,7 @@ package com.example.asus.projectpmd.PagerFragment.Chat;
 import com.example.asus.projectpmd.PagerFragment.Friend.Friend;
 import com.example.asus.projectpmd.R;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,23 +12,22 @@ import java.util.List;
  */
 
 public class ChatList {
-    public static final String[] namas = {"Friend One", "Friend Two", "Friend Three", "Friend Four", "Friend Five"};
-    public static final String[] descs = {"Hi", "Hello", "lol", "test", "abcd"};
-    public static final int[] icons = {R.drawable.profile, R.drawable.profile, R.drawable.profile, R.drawable.profile, R.drawable.profile};
-    public static final String[] times = {"01:00", "02:00", "03:00", "04:00", "05:00"};
+    public static List<Friend> items = new ArrayList();
+    public static final String[] ChatNama = {};
+    public static final String[] ChatDesc = {};
+    public static final int[] ChatIcon = {};
+    public static final String[] ChatTime = {};
 
-    public static List<Chat> createListItems(){
-        ArrayList<Chat> items = new ArrayList<>();
-        for(int i=0 ; i<namas.length; i++){
-            Chat chat = new Chat();
+    public static List<Friend> createListItems(){
+        items = new ArrayList<>();
+        for(int i=0 ; i<ChatNama.length; i++){
+            Friend chat = new Friend();
 
-            chat.setNama(namas[i]);
-            chat.setIcon(icons[i]);
-            chat.setDesc(descs[i]);
-            chat.setTime(times[i]);
+            chat.setNama(ChatNama[i]);
+            chat.setIcon(ChatIcon[i]);
+            chat.setDesc(ChatDesc[i]);
             items.add(chat);
         }
         return items;
     }
-
 }

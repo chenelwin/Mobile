@@ -11,7 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.asus.projectpmd.PagerFragment.Chat.Chat;
 import com.example.asus.projectpmd.PagerFragment.Chat.ChatActivity.ChatActivity;
+import com.example.asus.projectpmd.PagerFragment.Friend.AddFriend.AddFriendList;
 import com.example.asus.projectpmd.R;
 
 import java.util.List;
@@ -21,6 +23,13 @@ import java.util.List;
  */
 
 public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder> {
+
+    public interface TambahChat{
+        void addItemChat(Friend chat);
+    }
+
+    public static TambahChat tambahChat;
+
     List<Friend> friends;
     Context context;
 
@@ -48,6 +57,11 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), ChatActivity.class);
                 intent.putExtra("Nama", friend.getNama());
+
+                if(tambahChat!=null){
+                    tambahChat.addItemChat(friend);
+                    notifyDataSetChanged();
+                }
                 view.getContext().startActivity(intent);
             }
         });

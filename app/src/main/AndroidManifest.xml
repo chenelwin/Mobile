@@ -30,8 +30,12 @@
         <activity
             android:name=".PagerFragment.Friend.AddFriend.AddFriendActivity"
             android:screenOrientation="portrait"> </activity>
-        <activity android:name=".PagerFragment.Chat.ChatActivity.ChatActivity"> </activity>
-        <activity android:name=".PagerFragment.More.ProfileActivity.ProfileActivity"> </activity>
+        <activity android:name=".PagerFragment.Chat.ChatActivity.ChatActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".PagerFragment.More.ProfileActivity.ProfileActivity"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

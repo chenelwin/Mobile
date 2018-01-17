@@ -62,6 +62,14 @@
             android:layout_height="fill_parent"
             android:layout_weight="1">
 
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/RvChatMes"
+                android:scrollbars="vertical">
+
+            </android.support.v7.widget.RecyclerView>
+
         </LinearLayout>
 
         <LinearLayout
@@ -88,16 +96,18 @@
                 android:layout_marginRight="5dp"
                 android:src="@drawable/chatsticker"/>
             <EditText
+                android:id="@+id/chatMes"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:maxHeight="100dp"
                 android:textColor="@android:color/white"/>
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:id="@+id/chatSend"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginLeft="5dp"
-                android:src="@drawable/chatmic"/>
+                android:src="@drawable/chatsend"/>
 
         </LinearLayout>
 

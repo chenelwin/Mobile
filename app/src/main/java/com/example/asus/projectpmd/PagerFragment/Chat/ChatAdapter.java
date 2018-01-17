@@ -22,10 +22,10 @@ import java.util.List;
  */
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
-    List<Chat> chats;
+    List<Friend> chats;
     Context context;
 
-    public ChatAdapter(List<Chat> chatList){
+    public ChatAdapter(List<Friend> chatList){
         this.chats = chatList;
     }
 
@@ -39,12 +39,12 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        final Chat chat = chats.get(position);
+        final Friend chat = chats.get(position);
 
         holder.textChat.setText(chat.getNama());
-        holder.descChat.setText(chat.getDesc());
+        holder.descChat.setText("");
         holder.imgChat.setImageResource(chat.getIcon());
-        holder.time.setText(chat.getTime());
+//        holder.time.setText(chat.getTime());
         holder.cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,7 +72,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
             imgChat = (ImageView)itemView.findViewById(R.id.imgChat);
             textChat = (TextView)itemView.findViewById(R.id.textChat);
             descChat = (TextView)itemView.findViewById(R.id.descChat);
-            time = (TextView)itemView.findViewById(R.id.timeChat);
             cv = (CardView)itemView.findViewById(R.id.cv);
         }
     }
